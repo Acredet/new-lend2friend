@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt start",
+    "start": "node \"./node_modules/nuxt-start/bin/nuxt-start.js\"",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "npm run lint:js"
@@ -24,6 +24,7 @@
     "mongoose": "^5.10.5",
     "nodemailer": "^6.4.11",
     "nuxt": "^2.14.5",
+    "nuxt-start": "^2.14.5",
     "vue-html2pdf": "^1.6.6"
   },
   "devDependencies": {

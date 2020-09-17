@@ -24,6 +24,7 @@ export default {
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   telemetry: false,
+  components: true,
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
@@ -72,7 +73,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true
+      dark: false
     }
   },
   /*
