@@ -1,0 +1,6 @@
+{
+  "jwtSecret": "sl_myJwtSecret",
+  "user": "no-reply@acredit.se",
+  "pass": "TOJ1YbaX3LE4gdef",
+  "backEndUrl": "http://app.acredit.se/api"
+}
