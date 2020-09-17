@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <v-app-bar dense dark>
+  <v-app>
+    <v-app-bar app dense fixed dark>
       <v-toolbar-title>
         Lend2friend
       </v-toolbar-title>
@@ -18,12 +18,12 @@
       </div>
     </v-app-bar>
 
-    <v-app>
+    <main class="mt-15">
       <v-container>
         <nuxt />
       </v-container>
-    </v-app>
-  </div>
+    </main>
+  </v-app>
 </template>
 
 <script>
