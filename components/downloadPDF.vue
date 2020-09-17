@@ -13,7 +13,7 @@
         enable-download
       >
         <section slot="pdf-content" class="d-flex justify-contetn-center ">
-          <v-card id="scrolling-card" elevation="2" style="padding: 50px">
+          <v-card elevation="2" style="padding: 50px">
             <h3 style="text-align: center">
               SKULDEBREV
             </h3>

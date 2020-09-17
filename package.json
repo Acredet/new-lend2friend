@@ -8,6 +8,7 @@
     "start": "node \"./node_modules/nuxt-start/bin/nuxt-start.js\"",
     "generate": "nuxt generate",
     "commit": "git add . && git commit -m",
+    "push": "git push origin master",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "npm run lint:js"
   },
