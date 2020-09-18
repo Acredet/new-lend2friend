@@ -13,6 +13,8 @@ app.use(express.json({ extended: true }))
 app.use(express.urlencoded({ extended: true }))
 
 // Connect to db
+const { Nuxt, Builder } = require('nuxt')
+const nuxtConfig = require('../nuxt.config.js')
 const connectDB = require('./config/db')
 connectDB()
 
@@ -21,16 +23,32 @@ const usersRoute = require('./routes/users_route')
 const projectRoute = require('./routes/project_route')
 
 // Assign Routes
-app.use('/users', usersRoute)
-app.use('/project', projectRoute)
+app.use('/api/users', usersRoute)
+app.use('/api/project', projectRoute)
 
-// Export express app
-module.exports = app
+// Import and Set Nuxt.js options
+nuxtConfig.dev = process.env.NODE_ENV !== 'production'
 
-// Start standalone server if directly running
-if (require.main === module) {
-  const port = process.env.PORT || 3001
-  app.listen(port, () => {
-    console.log(`API server listening on port ${port}`)
-  })
+app.use(express.json({ extended: true }))
+app.use(express.urlencoded({ extended: true }))
+
+async function start () {
+  // Init Nuxt.js
+  const nuxt = new Nuxt(nuxtConfig)
+  // const { host, port } = nuxt.options.server;
+  await nuxt.ready()
+  // Build only in dev mode
+  if (nuxtConfig.dev) {
+    console.log('building')
+    const builder = new Builder(nuxt)
+    await builder.build()
+  }
+  // Give nuxt middleware to express
+  app.use(nuxt.render)
+  // Listen the server
+  const port = process.env.PORT || 3000
+  app.listen(port)
+
+  console.log(`Server listening on port:${port}`)
 }
+start()

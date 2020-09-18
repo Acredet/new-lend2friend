@@ -1,4 +1,5 @@
-export default {
+// eslint-disable-next-line nuxt/no-cjs-in-config
+module.exports = {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     titleTemplate: '%s - find-bug',
@@ -75,12 +76,6 @@ export default {
     theme: {
       dark: false
     }
-  },
-  /*
-  ** Server Middleware
-  */
-  serverMiddleware: {
-    '/api': '~/server/index'
   },
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {

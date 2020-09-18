@@ -714,6 +714,7 @@ export default {
       this.$axios
         .post('/project/', this.preview)
         .then((res) => {
+          console.log(res)
           this.downloadPdf = true
           this.dialog = true
         })
