@@ -38,6 +38,21 @@
         </v-col>
       </v-row>
     </v-container>
+
+    <v-snackbar v-model="snackbar.state" :timeout="2000">
+      {{ snackbar.text }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="pink"
+          text
+          v-bind="attrs"
+          @click="snackbar.state = false"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </div>
 </template>
 
@@ -46,6 +61,10 @@ export default {
   layout: 'auth',
   data () {
     return {
+      snackbar: {
+        state: false,
+        text: 'Hey'
+      },
       rules: {
         required: value => !!value || 'Required.',
         min: v => v.length >= 8 || 'Min 8 characters',
@@ -61,10 +80,12 @@ export default {
   methods: {
     async login () {
       try {
-        const response = await this.$auth.loginWith('local', { data: this.user })
-        console.log(response)
+        await this.$auth.loginWith('local', { data: this.user })
       } catch (err) {
-        console.log(err)
+        this.snackbar = {
+          state: true,
+          text: err.response.data.msg
+        }
       }
     }
   }
@@ -73,7 +94,6 @@ export default {
 
 <style lang="scss" scoped>
 #login-wrapper {
-  // background-image: linear-gradient(to bottom, #652264, #782677, #8c298b, #a12c9f, #b62fb4);
   background-image: url('~assets/images/login-bg.jpg');
   background-size: cover;
   background-position: center center;

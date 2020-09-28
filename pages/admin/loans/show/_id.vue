@@ -1,6 +1,12 @@
 <template>
   <v-container>
-    <h2>Details:</h2>
+    <div class="d-flex">
+      <h2>Details:</h2>
+      <v-spacer />
+      <v-btn color="primary" outlined tag="a" download>
+        Download PdF
+      </v-btn>
+    </div>
     <v-row v-if="project._id">
       <v-col cols="12" md="6">
         <!-- Start Lender -->
