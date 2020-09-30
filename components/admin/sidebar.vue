@@ -1,12 +1,18 @@
 <template>
   <div>
-    <v-app-bar color="deep-purple" dark>
-      <v-app-bar-nav-icon @click="drawer = true" />
+    <v-app-bar dark clipped-right app>
       <v-spacer />
       <v-toolbar-title>Lend2friend</v-toolbar-title>
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" fixed temporary>
+    <v-navigation-drawer
+      app
+      dark
+      fixed
+      mini-variant
+      expand-on-hover
+      permanent
+    >
       <v-list nav dense>
         <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
           <!-- Start Item -->

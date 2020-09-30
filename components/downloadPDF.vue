@@ -11,6 +11,7 @@
         pdf-orientation="portrait"
         pdf-content-width="100%"
         enable-download
+        @hasGenerated="hasGenerated($event)"
       >
         <section slot="pdf-content" class="d-flex justify-contetn-center ">
           <v-card elevation="2" style="padding: 50px">
@@ -257,6 +258,9 @@ export default {
     }
   },
   methods: {
+    hasGenerated (e) {
+      console.log(e)
+    },
     downloadPdf () {
       console.log('downloading')
       this.$refs.html2Pdf.generatePdf()

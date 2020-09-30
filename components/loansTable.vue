@@ -1,6 +1,38 @@
 <template>
   <div>
-    <v-data-table
+    <v-simple-table dense>
+      <template v-slot:default>
+        <thead>
+          <tr>
+            <th class="text-center" v-text="'manad'" />
+            <th class="text-center" v-text="'Bet/man'" />
+            <th class="text-center" v-text="'Amortering'" />
+            <th class="text-center" v-text="'Ranta'" />
+            <th v-if="$route.path !== '/'" class="text-center" v-text="'Paid'" />
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in (items.length > 0) ? items : rows" :key="`table-${index}`">
+            <td class="text-center">
+              {{ item.manad }}
+            </td>
+            <td class="text-center">
+              {{ item.bet }} kr
+            </td>
+            <td class="text-center">
+              {{ item.amortering }} kr
+            </td>
+            <td class="text-center">
+              {{ item.ranta }} kr
+            </td>
+            <td v-if="$route.path !== '/'" class="text-center">
+              {{ item.status }}
+            </td>
+          </tr>
+        </tbody>
+      </template>
+    </v-simple-table>
+    <!-- <v-data-table
       dense
       light
       :headers="(items.length > 0) ? headers : headers.slice(0, 4)"
@@ -22,7 +54,7 @@
       <template v-if="(items.length > 0)" v-slot:item.status="{ item }">
         <v-checkbox v-model="item.status" @change="updateProjectRow(item._id, $event)" />
       </template>
-    </v-data-table>
+    </v-data-table> -->
   </div>
 </template>
 

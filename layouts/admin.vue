@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <admin-sidebar />
-    <v-container>
+    <v-container class="pl-15 pt-15">
       <nuxt />
     </v-container>
   </v-app>
