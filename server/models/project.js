@@ -83,8 +83,8 @@ const projectSchema = new mongoose.Schema({
         amortering: Number,
         ranta: Number,
         status: {
-          type: Boolean,
-          default: false
+          type: String,
+          default: 'Not paid'
         },
         dueDate: Date
       }

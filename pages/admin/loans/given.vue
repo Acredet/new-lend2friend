@@ -24,7 +24,7 @@
           {{ item.loptid }} manad
         </template>
 
-        <template v-slot:body.append="{ headers }">
+        <template v-slot:body.append>
           <tr>
             <td v-for="header in headers" :key="header.text" class="font-weight-black text-start" v-text="header.text" />
           </tr>
@@ -85,7 +85,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-@import url('@/assets/css/main.scss');
-</style>

@@ -8,7 +8,7 @@
             <th class="text-center" v-text="'Bet/man'" />
             <th class="text-center" v-text="'Amortering'" />
             <th class="text-center" v-text="'Ranta'" />
-            <th v-if="$route.path !== '/'" class="text-center" v-text="'Paid'" />
+            <th v-if="$route.path !== '/'" class="text-center" v-text="'status'" />
           </tr>
         </thead>
         <tbody>
@@ -75,7 +75,7 @@ export default {
         { text: 'Bet/man', value: 'bet' },
         { text: 'Amortering', value: 'amortering' },
         { text: 'Ranta', value: 'ranta' },
-        { text: 'Paid', value: 'status' }
+        { text: 'Status ', value: 'status' }
       ]
     }
   },

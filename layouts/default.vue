@@ -1,11 +1,11 @@
 <template>
   <v-app>
-    <v-app-bar app dense fixed dark>
+    <v-app-bar app dense dark>
       <v-toolbar-title>
         Lend2friend
       </v-toolbar-title>
       <v-spacer />
-      <v-btn v-if="!$auth.loggedIn" text to="/login">
+      <v-btn v-if="$auth && !$auth.loggedIn" text to="/login">
         login
       </v-btn>
       <div v-else>

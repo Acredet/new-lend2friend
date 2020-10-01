@@ -8,61 +8,39 @@
       </v-btn>
     </div>
     <v-row v-if="project._id">
-      <v-col cols="12" md="6">
+      <v-col cols="12" md="5" class="cinereousTable pa-3">
+        <div style="border: 1px solid #325d88; ">
+          <h4 style="background: #325d88; color: white; " class="pa-3 mb-2">
+            Project Information
+          </h4>
+          <div class="ma-2">
+            <table v-for="(person, index) in peopleInfo" :key="`person-${index}`" style="width: 100%">
+              <tbody style="width: 100%">
+                <tr style="width: 100%">
+                  <td colspan="2" class="font-weight-bolder" v-text="person.header" />
+                </tr>
+                <tr v-for="info in rows" :key="info.key" style="width: 100%">
+                  <td><b>{{ info.key }}</b></td>
+                  <td>{{ project[person.obj][info.value] }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
         <!-- Start Lender -->
-        <b style="margin: 15px 10px 0 0; display: block;  color: black;">Låntagare</b>
-        <p id="lender-Namn">
-          Namn :
-          <span style="color: red">{{ project.borrower.name }}</span>
-        </p>
-        <p id="lender-Personnummer">
-          Personnummer :
-          <span style="color: red">{{ project.borrower.SSN }}</span>
-        </p>
-        <p id="lender-Adress">
-          Adress :
-          <span style="color: red">{{ project.borrower.address }}</span>
-        </p>
-        <p id="lender-Telefonnummer">
-          Telefonnummer :
-          <span style="color: red">{{ project.borrower.tel }}</span>
-        </p>
-        <p id="lender-Email">
-          Email :
-          <span style="color: red">{{ project.borrower.email }}</span>
-        </p>
-        <!-- End Lender -->
       </v-col>
 
-      <v-col cols="12" md="6">
-        <!-- Start Borrower -->
-        <b style="margin: 15px 10px 0 0; display: block;  color: black;">Låntagivre</b>
-        <p id="borrower-Namn">
-          Namn :
-          <span style="color: red">{{ project.lender.name }}</span>
-        </p>
-        <p id="borrower-Personnummer">
-          Personnummer :
-          <span style="color: red">{{ project.lender.SSN }}</span>
-        </p>
-        <p id="borrower-Adress">
-          Adress :
-          <span style="color: red">{{ project.lender.address }}</span>
-        </p>
-        <p id="borrower-Telefonnummer">
-          Telefonnummer :
-          <span style="color: red">{{ project.lender.tel }}</span>
-        </p>
-        <p id="borrower-Email">
-          Email :
-          <span style="color: red">{{ project.lender.email }}</span>
-        </p>
-        <!-- End Borrower -->
+      <v-col cols="12" md="7" class="cinereousTable">
+        <div style="border: 1px solid #f47c3c; ">
+          <h4 style="background: #f47c3c; color: white; " class="pa-3 mb-2">
+            Project Information
+          </h4>
+          <loansTable class="ma-2" :items="project.tableRows" />
+        </div>
       </v-col>
     </v-row>
     <v-divider />
-    <h2 class="mt-5 mb-3" v-text="'Loans:'" />
-    <loansTable :items="project.tableRows" />
   </v-container>
 </template>
 
@@ -77,7 +55,24 @@ export default {
   },
   data () {
     return {
-      project: {}
+      project: {},
+      rows: [
+        { key: 'Namn', value: 'name' },
+        { key: 'Personnummer', value: 'SSN' },
+        { key: 'Adress', value: 'address' },
+        { key: 'Telefonnummer', value: 'tel' },
+        { key: 'Email', value: 'email' }
+      ],
+      peopleInfo: {
+        1: {
+          header: 'Låntagare',
+          obj: 'borrower'
+        },
+        2: {
+          header: 'Låntagivre',
+          obj: 'lender'
+        }
+      }
     }
   },
   async beforeCreate () {
@@ -97,6 +92,13 @@ export default {
           })
       })
       .catch(err => console.log(err))
+  },
+  head () {
+    return {
+      link: [
+        { rel: 'stylesheet', href: '/css/main.css', body: true }
+      ]
+    }
   }
 }
 </script>

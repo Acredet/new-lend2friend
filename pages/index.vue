@@ -137,7 +137,7 @@ export default {
           bet: this.aminuity.toFixed(2),
           amortering: Am.toFixed(2),
           ranta: R,
-          status: false,
+          status: 'Not Paid',
           dueDate: new Date().setMonth(this.today + (i - 1))
         }
         rows.push(row)
