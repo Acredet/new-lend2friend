@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-app-bar dark clipped-right app>
+      <v-app-bar-nav-icon @click="drawer = !drawer" />
       <v-spacer />
       <v-menu :rounded="false" offset-y>
         <template v-slot:activator="{ attrs, on }">
@@ -26,14 +27,7 @@
       </v-menu>
     </v-app-bar>
 
-    <v-navigation-drawer
-      app
-      dark
-      fixed
-      mini-variant
-      expand-on-hover
-      permanent
-    >
+    <v-navigation-drawer v-model="drawer" dark app :absolute="false">
       <v-list nav dense>
         <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
           <!-- Start Item -->
@@ -53,7 +47,7 @@
 <script>
 export default {
   data: () => ({
-    drawer: false,
+    drawer: true,
     group: '',
     links: [
       { text: 'Website Home', url: '/', icon: 'mdi-home' },
