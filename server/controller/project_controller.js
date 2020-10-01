@@ -4,7 +4,7 @@ const { User, validate } = require('../models/user')
 const { Project } = require('../models/project')
 const { transporter, createPasswordTemplate } = require('../config/mail')
 
-async function createUser (user, res) {
+async function createUser(user, res) {
   // Check if valid user
   const { error } = validate(user)
   if (error) { return res.status(401).json(error.message) }
@@ -181,6 +181,26 @@ exports.getBorrowerProjects = async (req, res) => {
   await Project.find({ borrower: req.user.id })
     .then(projects => res.status(200).json(projects))
     .catch(err => res.status(401).json(err))
+}
+
+// Get the overdate project
+exports.getOverDateProjects = async (req, res) => {
+  console.log(req.user.id)
+  let projectId = [];
+  let datetime = new Date();
+  datetime.setHours(0,0,0,0);
+  let allProject = await Project.find({});
+  allProject.forEach(element => {
+    let i = 0;    
+    element.tableRows.forEach(eleme => {
+      if(eleme.dueDate < datetime && eleme.status == false) {
+        i++;
+        projectId.push(element._id);
+      }
+    })
+    // console.log(element.tableRows);
+  });
+  res.status(200).json(projectId);
 }
 
 exports.updateProject = async (req, res) => {
