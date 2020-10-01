@@ -1,6 +1,6 @@
 <template>
-  <v-row dense>
-    <v-col v-for="(item, i) in items" :key="i" cols="12" md="3">
+  <v-row class="mt-5" dense>
+    <v-col v-for="(item, i) in items" :key="i" cols="12" md="4">
       <v-card :color="item.color" dark>
         <div class="d-flex flex-no-wrap justify-space-between">
           <div>
@@ -25,13 +25,13 @@ export default {
     return {
       items: [
         {
-          color: '#1F7087',
+          color: '#f47c3c',
           title: 'Users',
           icon: 'mdi-account',
           artist: '16 User'
         },
         {
-          color: '#952175',
+          color: '#29abe0',
           title: 'Loans',
           icon: 'mdi mdi-cash-usd-outline',
           artist: '106 958 KR'

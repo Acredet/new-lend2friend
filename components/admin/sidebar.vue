@@ -2,7 +2,28 @@
   <div>
     <v-app-bar dark clipped-right app>
       <v-spacer />
-      <v-toolbar-title>Lend2friend</v-toolbar-title>
+      <v-menu :rounded="false" offset-y>
+        <template v-slot:activator="{ attrs, on }">
+          <div class="d-flex justify-center align-center" v-bind="attrs" v-on="on">
+            <v-avatar>
+              <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
+            </v-avatar>
+            <v-spacer />
+            <p class="ma-0" v-text="'Mohammed'" />
+          </div>
+        </template>
+
+        <v-list>
+          <v-list-item link to="/admin/profile">
+            Profile
+          </v-list-item>
+          <v-list-item>
+            <v-btn color="error" text block @click="$auth.logout()">
+              Logout
+            </v-btn>
+          </v-list-item>
+        </v-list>
+      </v-menu>
     </v-app-bar>
 
     <v-navigation-drawer
