@@ -9,7 +9,8 @@ const {
   updateProject,
   deleteProject,
   getLenderProjects,
-  getBorrowerProjects
+  getBorrowerProjects,
+  getOverDateProjects
 } = require('../controller/project_controller')
 
 const router = express.Router()
@@ -28,5 +29,6 @@ router
 
 router.get('/loans/lender', auth, getLenderProjects)
 router.get('/loans/borrower', auth, getBorrowerProjects)
+router.get('/loans/overdateloan', auth, getOverDateProjects)
 
 module.exports = router

@@ -1,11 +1,11 @@
 <template>
   <v-app style="background-color: #ededed">
     <admin-sidebar />
-    <v-content>
-      <v-container class="pl-15 pt-15">
+    <v-main>
+      <v-container>
         <nuxt />
       </v-container>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 
