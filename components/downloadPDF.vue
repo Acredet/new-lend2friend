@@ -252,6 +252,7 @@ export default {
       handler (newValue) {
         console.log('newValue', newValue)
         if (newValue === true) {
+          this.hasGenerated()
           this.downloadPdf()
         }
       }
@@ -260,11 +261,23 @@ export default {
   methods: {
     hasGenerated (e) {
       console.log(e)
+      /** TODO: ADD URL
+      * const file = new File([e], 'name')
+      * const data = new FormData()
+      * data.append('file', file)
+      * this.$axios.$post('URL', data)
+      *   .then((res) => { console.log(res); this.$emit('pdfGenerated', res) })
+      *   .catch(err => console.log(err))
+      */
+      this.$store.dispatch('updatePdfLink', e)
     },
     downloadPdf () {
       console.log('downloading')
       this.$refs.html2Pdf.generatePdf()
-      this.$emit('downloaded')
+      this.$nextTick(() => {
+        this.$emit('downloaded')
+      })
+      // this.$emit('downloaded')
     }
   }
 }

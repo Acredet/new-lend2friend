@@ -523,7 +523,7 @@
     </v-col>
     <!-- Start Inputs -->
 
-    <downloadPDF :download="downloadPdf" @downloaded="downloadPdf = false; dialog = false" />
+    <downloadPDF :download="downloadPdf" @pdfGenerated="savePDF($event)" @downloaded="downloadPdf = false; dialog = false" />
 
     <v-col cols="12" class="d-flex">
       <v-btn color="warning" @click="changeStep(1)">

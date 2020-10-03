@@ -33,7 +33,8 @@ export const state = () => ({
       shouldHePayInterestAfterLoanCancle: false
     },
     tableRows: [],
-    paymentHolder: 'simple'
+    paymentHolder: 'simple',
+    pdf: ''
   }
 })
 
@@ -43,6 +44,9 @@ export const mutations = {
   },
   tableRows (state, rows) {
     state.preview.tableRows = rows
+  },
+  pdf (state, link) {
+    state.preview.pdf = link
   }
 }
 
@@ -119,6 +123,9 @@ export const actions = {
   },
   updateRows ({ commit }, rows) {
     commit('tableRows', rows)
+  },
+  updatePdfLink ({ commit }, link) {
+    commit('pdf', link)
   }
 }
 
